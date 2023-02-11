@@ -26,4 +26,4 @@ Users can then start the conversation based on their decided chat modes.
 
 -> Google drive link: https://drive.google.com/drive/u/1/folders/1GnA5auyZAfhIFlR7SUkm8DpGsEZKJykY
 
--> Github link: https://github.com/Navya-Sindhu/SER517-Spring2023-Team10
+
