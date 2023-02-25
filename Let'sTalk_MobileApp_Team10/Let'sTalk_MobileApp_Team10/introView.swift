@@ -21,14 +21,17 @@ struct introView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Color("Twilight")
                 Spacer()
                 Text("What is 'Let's Talk'?")
-                    .font(.largeTitle)
+                    .font(.custom("LeagueSpartan", size: 34))
+                    .foregroundColor(Color("Strong"))
                     .bold()
-                Text("One-on-one live conversations for people over 21 who want to improve communication skills on challenging topics, fostering deeper understanding and human connection").font(.system(size:15))
+                Text("One-on-one live conversations for people over 21 who want to improve communication skills on challenging topics, fostering deeper understanding and human connection").font(.system(size:15)).foregroundColor(Color("Strong"))
+                
                 Spacer()
-                Text("Features").bold().underline()
-                Text(text).lineSpacing(30)
+                Text("Features").bold().underline().foregroundColor(Color("Strong"))
+                Text(text).foregroundColor(Color("Strong")).lineSpacing(30).font(.custom("Poppins", size:20))
                 Spacer()
 
                 NavigationLink(destination: benefitsView()) {
@@ -36,15 +39,22 @@ struct introView: View {
                     
                     Text("Continue")
                 }
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                .font(.custom("Poppins", size:20))
+                .foregroundColor(Color("Strong"))
+                .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color("Strong"), lineWidth: 2)
+                        )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .offset(y: -50)
                         .navigationBarBackButtonHidden(true)
 
             }
+            .background(Color("Twilight"))
         }
+        .navigationBarHidden(true)
     }
 }
 
@@ -53,3 +63,4 @@ struct introView_Previews: PreviewProvider {
         introView()
     }
 }
+
