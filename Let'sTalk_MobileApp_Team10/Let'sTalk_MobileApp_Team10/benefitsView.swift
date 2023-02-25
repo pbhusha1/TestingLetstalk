@@ -18,34 +18,47 @@ struct benefitsView: View {
     
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                Text("Why 'Let's Talk'?")
-                    .font(.largeTitle)
-                    .bold()
-                Text("User Benefits").font(.system(size:25)).lineSpacing(50)
-                Spacer()
-                Text(text).lineSpacing(50)
-                Spacer()
-
-                NavigationLink(destination: conditionsView()) {
-                    //LINK TO SECOND PAGE
+        ZStack {
+            Color("Twilight")
+            NavigationView {
+                VStack {
+                    Color("Hex")
+                    Spacer()
+                    Text("Why 'Let's Talk'?")
+                        .font(.custom("LeagueSpartan", size: 34))
+                        .foregroundColor(Color("Strong"))
+                        .bold()
                     
-                    Text("Continue")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                    Text("User Benefits").font(.custom("LeagueSpartan", size: 25)).foregroundColor(Color("Strong")).lineSpacing(50)
+                    Spacer()
+                    Text(text).font(.custom("Poppins", size:20)).foregroundColor(Color("Strong")).lineSpacing(30)
+                    Spacer()
                     
+                    NavigationLink(destination: conditionsView()) {
+                        //LINK TO SECOND PAGE
+                        
+                        Text("Continue")
+                            .font(.custom("Poppins", size:20))
+                            .foregroundColor(Color("Strong"))
+                            .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .stroke(Color("Strong"), lineWidth: 2)
+                                    )
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .offset(y: -50)
+                        
+                    }
                 }
+                .padding()
+                //.navigationBarTitle("")
+                .navigationBarHidden(true)
+                .background(Color("Twilight"))
             }
             .padding()
-            //.navigationBarTitle("")
             .navigationBarHidden(true)
         }
-        .padding()
     }
 }
 
