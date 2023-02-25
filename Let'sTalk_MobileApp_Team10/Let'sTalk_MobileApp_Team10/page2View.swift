@@ -1,8 +1,8 @@
 //
 //  page2View.swift
-//  Application1
+//  Let'sTalk_MobileApp_Team10
 //
-//  Created by Krishna Sai  on 2/10/23.
+//  Created by Krishna Sai  on 2/1/23.
 //
 
 import SwiftUI
@@ -14,11 +14,11 @@ struct page2View: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Username").padding()
+                Text("Username").padding().foregroundColor(Color("Strong"))
                 TextField("Enter your username", text: $name)
             }
             HStack {
-                Text("Password").padding()
+                Text("Password").padding().foregroundColor(Color("Strong"))
                 SecureField("Enter your password", text: $pwd)
             }
             Button(action: {
