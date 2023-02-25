@@ -1,8 +1,8 @@
 //
 //  page1View.swift
-//  Application1
+//  Let'sTalk_MobileApp_Team10
 //
-//  Created by Krishna Sai  on 2/10/23.
+//  Created by Krishna Sai  on 2/1/23.
 //
 
 import SwiftUI
@@ -12,13 +12,15 @@ struct page1View: View {
     
     var body: some View {
         VStack {
+            Color("Twilight")
             Text("Why Let's Talk?")
                 .font(.largeTitle)
+                .foregroundColor(Color("Strong"))
                 .bold()
-            Text("Safe conversations to foster understanding")
-            Text("Improve Communication skills")
-            Text("Improve understanding")
-            Text("Broaden your mindet")
+            Text("Safe conversations to foster understanding").foregroundColor(Color("Strong"))
+            Text("Improve Communication skills").foregroundColor(Color("Strong"))
+            Text("Improve understanding").foregroundColor(Color("Strong"))
+            Text("Broaden your mindet").foregroundColor(Color("Strong"))
 //            Text("My name is")
 //                .font(.headline)
 //            TextField("Enter your name", text: $name)
@@ -26,12 +28,12 @@ struct page1View: View {
 //                .padding()
             HStack {
                 NavigationLink(destination: page3View()) {
-                    Text("Register")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        Text("Register")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
                 }
                 Spacer()
                 NavigationLink(destination: page2View()) {
@@ -50,6 +52,7 @@ struct page1View: View {
         }
         .padding()
         .navigationBarTitle("Enter Your Name")
+        .background(Color("Twilight"))
     }
 }
 
@@ -58,4 +61,3 @@ struct StartPage_Previews: PreviewProvider {
         page1View()
     }
 }
-
