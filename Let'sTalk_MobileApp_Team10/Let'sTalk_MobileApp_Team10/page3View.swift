@@ -6,6 +6,25 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
+
+let db = Firestore.firestore()
+
+struct User {
+    
+    var name: String
+    var pwd: String
+    var age: String
+    var gen: String
+    var repwd: String
+    var email: String
+    var phone: String
+
+}
+
+
 
 struct page3View: View {
     @State private var name: String = ""
@@ -18,6 +37,7 @@ struct page3View: View {
     @State private var selection = 1
     @State private var error = ""
     @State private var registrationComplete = false
+    @State private var showAlert = false
     
     var body: some View {
         
@@ -30,10 +50,10 @@ struct page3View: View {
                 HStack{
                     Text("Name").padding().foregroundColor(Color("Strong"))
                     TextField("Enter your name", text: $name)
-                    .padding()
-                    .tag(1)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .foregroundColor(Color("Strong"))
+                        .padding()
+                        .tag(1)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .foregroundColor(Color("Strong"))
                 }
                 HStack{
                     Text("Age").padding().foregroundColor(Color("Strong"))
@@ -43,7 +63,7 @@ struct page3View: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .foregroundColor(Color("Strong"))
                 }
-                HStack{
+                HStack(spacing:-10){
                     Text("Gender").padding().foregroundColor(Color("Strong"))
                     Picker(selection: $selection, label: Text("Select a Gender")) {
                         Text("Male").tag(1)
@@ -80,71 +100,119 @@ struct page3View: View {
                         .padding()
                         .tag(7)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                    
                 }
                 
-                VStack {
-                    NavigationLink(destination: uploadPhotoView()) {
-//                        Text("Register")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .background(Color.blue)
-//                            .cornerRadius(10)
-                        Text("Register")
-                            .font(.custom("Poppins", size:20))
-                            .foregroundColor(Color("Strong"))
-                            .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color("Strong"), lineWidth: 2)
-                                    )
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    //.offset(y: -50)
+              
+                
+                
+               HStack {
+                    // ... your code here ...
+                    Button("Register") {
+                        
+                        Auth.auth().createUser(withEmail: email, password: pwd) { authResult, error in
+                            if let error = error {
+                                print(error)
+                                // Handle error here
+                            } else {
+                                registrationComplete = true
+                            }
+                        }
+                            
+                        if (selection == 1){
+                            gen = "Male"
+                        }
+                        else
+                        {
+                            gen = "Female"
+                        }
+                        
+                        
+                            let user = User(name: name, pwd: pwd, age: age, gen: gen, repwd: repwd, email: email, phone: phone)
+                            
+                            db.collection("users").addDocument(data: [
+                            
+                                "name": user.name,
+                                "pwd": user.pwd,
+                                "age": user.age,
+                                "gen": user.gen,
+                                "repwd": user.repwd,
+                                "email": user.email,
+                                "phone": user.phone
+                            ])
+                            
+                        showAlert = true
+                        
                     }
+                    .font(.custom("Poppins", size:20))
+                    .foregroundColor(Color("Strong"))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color("Strong"), lineWidth: 2)
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    //.disabled(registrationComplete)
+                   // .opacity(registrationComplete ? 0.5 : 1.0)
+                    
+              
+                  if registrationComplete
+                   {
+                      NavigationLink(destination: uploadPhotoView()) {
+                          Text("Continue")
+                          
+                      }  .font(.custom("Poppins", size:20))
+                          .foregroundColor(Color("Strong"))
+                          .padding(.horizontal, 20)
+                          .padding(.vertical, 10)
+                          .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color("Strong"), lineWidth: 2)
+                          )
+                          .frame(maxWidth: .infinity, maxHeight: .infinity)
+                         // .disabled(registrationComplete)
+                         // .opacity(registrationComplete ? 0.5 : 1.0)
+                      
+                  }
+                   
+                   //if registrationComplete {
+                
+                     //   NavigationLink(destination: uploadPhotoView()) {
+                       //     Text("Continue")
+                           //     .font(.custom("Poppins", size:20))
+                         //       .foregroundColor(.white)
+                             //   .padding(.horizontal, 20)
+                               // .padding(.vertical, 10)
+                                //.background(Color.blue)
+                                //.cornerRadius(10)
+                        //}
+                        
+                        //.padding(.top, 20)
+                    
+                   }
+                
                 }
                 
+            .alert(isPresented: $showAlert){
+                Alert(title: Text("Registration Successful"), message: Text(" \(name) is registered"), dismissButton: .default(Text("OK")))
                 
-//                Button("Register", action: register)
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .background(Color.blue)
-//                    .cornerRadius(10)
-                           
-//                NavigationLink(
-//                    destination: uploadPhotoView(),
-//                    tag: true,
-//                    selection: $registrationComplete,
-//                    label: {
-//                        Button("Register", action: register)
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .background(Color.blue)
-//                            .cornerRadius(10)
-//                    })
-//                VStack {
-//                    NavigationLink(destination: uploadPhotoView()) {
-//                        Text("Register")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .padding()
-//                            .background(Color.blue)
-//                            .cornerRadius(10)
-//                    }
-//                }
             }
+            
             .background(Color("Twilight"))
+                .navigationBarHidden(true)
+            }
         }
-        .navigationBarHidden(true)
+        
+        
+        
+        //struct page3View_Previews: PreviewProvider {
+        //  static var previews: some View {
+        //    page3View()
+        //}
+        //}
+        
     }
 
-}
 
-struct page3View_Previews: PreviewProvider {
-    static var previews: some View {
-        page3View()
-    }
-}
+
