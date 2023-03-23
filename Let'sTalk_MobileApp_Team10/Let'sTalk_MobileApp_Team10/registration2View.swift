@@ -36,6 +36,7 @@ struct registration2View: View {
                                                 .foregroundColor(Color("Strong"))
                                                 .padding(.horizontal, 20)
                                                 .padding(.vertical, 10)
+                                                .frame(width: 200, height: 50)
                                                 .background(
                                                     RoundedRectangle(cornerRadius: 20)
                                                         .stroke(Color("Strong"), lineWidth: 2)
@@ -56,8 +57,14 @@ struct registration2View: View {
                                     .padding(.horizontal)
                                     .padding(.vertical, 5)
                 }
-                Toggle("Show my Gender on my Profile", isOn: $displayGenderOnProfile)
-                                    .padding(.vertical)
+                HStack {
+                    Text("Display Gender on Profile")
+                        .font(.custom("Poppins", size: 16))
+                        .foregroundColor(Color("Strong"))
+                    Spacer()
+                    CheckboxView(checked: $displayGenderOnProfile)
+                }
+                .padding(.vertical)
                 NavigationLink(destination: registration3View()) {
                     //LINK TO SECOND PAGE
                     
@@ -82,6 +89,19 @@ struct registration2View: View {
             
         }
         .navigationBarHidden(true)
+    }
+}
+
+struct CheckboxView: View {
+    @Binding var checked: Bool
+    var body: some View {
+        Button(action: {
+            self.checked.toggle()
+        }) {
+            Image(systemName: checked ? "checkmark.square.fill" : "square")
+                .foregroundColor(Color("Strong"))
+                .font(.system(size: 22))
+        }
     }
 }
 
