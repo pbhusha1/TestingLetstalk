@@ -24,8 +24,23 @@ struct registration1View: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .offset(y: -50)
                 Spacer ()
-                VStack {
-                    Text("My name is")
+                VStack(alignment: .leading) {
+                    Text("My name is...")
+                        .font(.title)
+                        .font(.custom("Poppins", size:20))
+                        .foregroundColor(Color("Strong"))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .offset(y: -50)
+                    
+                    TextField("", text: $name)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .padding(.horizontal)
+                        .frame(height: 1)
+                        //.padding(.top, 20)
+                        .background(Color.blue)
+                        .padding(.vertical, -30)
+                    
+                    Text("My username is...")
                         .font(.title)
                         .font(.custom("Poppins", size:20))
                         .foregroundColor(Color("Strong"))
