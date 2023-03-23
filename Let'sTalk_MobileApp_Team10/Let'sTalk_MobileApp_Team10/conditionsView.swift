@@ -14,7 +14,7 @@ struct conditionsView: View {
                 Color("Twilight")
                 //Spacer()
                 Text("Welcome to Let's Talk")
-                    .font(.largeTitle)
+                    .font(.system(size:28))
                     .foregroundColor(Color("Strong"))
                     .bold()
                 Text("Please follow these community rules").font(.system(size:15)).foregroundColor(Color("Strong"))
@@ -30,7 +30,7 @@ struct conditionsView: View {
                     Text("Be proactive.").bold().foregroundColor(Color("Strong")).font(.system(size:20))
                     Text("Be an up stander, protect the community").foregroundColor(Color("Strong"))
                 }
-                NavigationLink(destination: page3View()) {
+                NavigationLink(destination: registration1View()) {
                     //LINK TO SECOND PAGE
                     
                     Text("I Agree")
