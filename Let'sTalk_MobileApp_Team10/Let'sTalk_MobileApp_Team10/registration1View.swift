@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct registration1View: View {
-    @State private var name: String = ""
+    @State var name: String = ""
+    @State var username: String = ""
+    @State var isRegistrationComplete = false
+        var db = Firestore.firestore()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,6 +29,7 @@ struct registration1View: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .offset(y: -50)
                 Spacer ()
+                
                 VStack(alignment: .leading) {
                     Text("My name is...")
                         .font(.title)
@@ -47,7 +53,7 @@ struct registration1View: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .offset(y: -50)
                     
-                    TextField("", text: $name)
+                    TextField("", text: $username)
                         .textFieldStyle(PlainTextFieldStyle())
                         .padding(.horizontal)
                         .frame(height: 1)
@@ -55,7 +61,12 @@ struct registration1View: View {
                         .background(Color.blue)
                         .padding(.vertical, -30)
 
-                    NavigationLink(destination: registration2View()) {
+                   //NavigationLink(destination: registration2View())
+                    
+                    Button(action: {
+                                    addUser()
+                                })
+                    {
                         //LINK TO SECOND PAGE
                         
                         Text("Continue")
@@ -68,17 +79,45 @@ struct registration1View: View {
                                     .stroke(Color("Strong"), lineWidth: 2)
                             )
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            //.onTapGesture {
+                              // addUser()
+                                
+                            //}
+                           
                         //.offset(y: -50)
                         
                     }
+                   
                     .navigationBarBackButtonHidden(true)
                 }
+                .fullScreenCover(isPresented: $isRegistrationComplete) {
+                    registration2View(username: username)
+                        }
                 .background(Color("Twilight"))
             }
             .background(Color("Twilight"))
         }
         .navigationBarHidden(true)
     }
+    
+    func addUser() {
+           if name != "" && username != "" {
+               let newUser = db.collection("users").document()
+               newUser.setData([
+                   "id": newUser.documentID,
+                   "name": name,
+                   "username": username
+               ]) { error in
+                   if let error = error {
+                       print("Errro adding the user: \(error.localizedDescription)")
+                   } else {
+                       print("User added with ID: \(newUser.documentID)")
+                   }
+               }
+               isRegistrationComplete = true
+           }
+       }
+    
 }
 
 struct registration1View_Previews: PreviewProvider {
