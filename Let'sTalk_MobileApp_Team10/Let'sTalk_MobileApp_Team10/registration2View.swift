@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct registration2View: View {
     let genders = ["Male", "Female", "Non-Binary"]
-    @State private var selectedGender: String?
-    @State private var displayGenderOnProfile = false
+    let username: String
+    @State  var selectedGender: String?
+    @State  var displayGenderOnProfile = false
+    @State var showAlert = false
+    @State var isGenderSelectionComplete = false
+    let db = Firestore.firestore()
+    
+    
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
+                
                 Text("Let's Talk")
                     .font(.custom("LeagueSpartan", size: 34))
                     .foregroundColor(Color("Strong"))
@@ -27,35 +35,35 @@ struct registration2View: View {
                     .offset(y: -50)
                 Spacer ()
                 ForEach(genders, id: \.self) { gender in
-                                    Button(action: {
-                                        selectedGender = gender
-                                    }) {
-                                        HStack {
-                                            Text(gender)
-                                                .font(.custom("Poppins", size:20))
-                                                .foregroundColor(Color("Strong"))
-                                                .padding(.horizontal, 20)
-                                                .padding(.vertical, 10)
-                                                .frame(width: 200, height: 50)
-                                                .background(
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .stroke(Color("Strong"), lineWidth: 2)
-                                                )
-                                                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                                            //Spacer()
-                                            if selectedGender == gender {
-                                                Image(systemName: "checkmark")
-                                                    .foregroundColor(.blue)
-                                            }
-                                        }
-                                        //.padding(.horizontal)
-                                        //.padding(.vertical, 10)
-                                    }
-                                    .accentColor(.primary)
-                                    .background(Color.clear)
-                                    .cornerRadius(10)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 5)
+                    Button(action: {
+                        selectedGender = gender
+                    }) {
+                        HStack {
+                            Text(gender)
+                                .font(.custom("Poppins", size:20))
+                                .foregroundColor(Color("Strong"))
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
+                                .frame(width: 200, height: 50)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color("Strong"), lineWidth: 2)
+                                )
+                            //.frame(maxWidth: .infinity, maxHeight: .infinity)
+                            //Spacer()
+                            if selectedGender == gender {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                        //.padding(.horizontal)
+                        //.padding(.vertical, 10)
+                    }
+                    .accentColor(.primary)
+                    .background(Color.clear)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                 }
                 HStack {
                     Text("Display Gender on Profile")
@@ -65,9 +73,13 @@ struct registration2View: View {
                     CheckboxView(checked: $displayGenderOnProfile)
                 }
                 .padding(.vertical)
-                NavigationLink(destination: registration3View()) {
-                    //LINK TO SECOND PAGE
-                    
+                
+                
+                //LINK TO SECOND PAGE
+                Button(action: {
+                    addGender()
+                })
+                {
                     Text("Continue")
                         .font(.custom("Poppins", size:20))
                         .foregroundColor(Color("Strong"))
@@ -78,35 +90,63 @@ struct registration2View: View {
                                 .stroke(Color("Strong"), lineWidth: 2)
                         )
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Enter Gender"), message: Text("Please select a gender for \(username)."), dismissButton: .default(Text("OK")))
+                        }
                     //.offset(y: -50)
                     
                 }
                 .navigationBarBackButtonHidden(true)
-                    
-
+                
             }
+            .fullScreenCover(isPresented: $isGenderSelectionComplete) {
+                registration3View()
+            }
+            
+            
+            
             .background(Color("Twilight"))
+            .onAppear {
+                showAlert = true
+            }
             
         }
         .navigationBarHidden(true)
+        
     }
-}
-
-struct CheckboxView: View {
-    @Binding var checked: Bool
-    var body: some View {
-        Button(action: {
-            self.checked.toggle()
-        }) {
-            Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .foregroundColor(Color("Strong"))
-                .font(.system(size: 22))
+    func addGender() {
+        //if name != "" && username != "" {
+        if let selectedGender = selectedGender {
+            
+            let userRef = Firestore.firestore().collection("users").document(username)
+            print(userRef)
+            userRef.setData(["gender": selectedGender], merge: true)
+            
+            isGenderSelectionComplete = true
+            
+            
+        }
+    }
+    
+    
+    
+    struct CheckboxView: View {
+        @Binding var checked: Bool
+        var body: some View {
+            Button(action: {
+                self.checked.toggle()
+            }) {
+                Image(systemName: checked ? "checkmark.square.fill" : "square")
+                    .foregroundColor(Color("Strong"))
+                    .font(.system(size: 22))
+                
+            }
         }
     }
 }
 
 struct registration2View_Previews: PreviewProvider {
     static var previews: some View {
-        registration2View()
+        registration2View(username: "test")
     }
 }
