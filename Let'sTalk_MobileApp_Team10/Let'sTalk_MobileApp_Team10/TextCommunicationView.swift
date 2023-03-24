@@ -2,7 +2,7 @@
 //  TextCommunicationView.swift
 //  Let'sTalk_MobileApp_Team10
 //
-//  Created by Krishna Sai  on 3/23/23.
+//  Created by Krishna Sai  on 3/24/23.
 //
 
 import SwiftUI
@@ -20,7 +20,12 @@ struct TextCommunicationView: View {
             Message(text: "How are you?", isMe: false),
         ]
     @State private var newMessageText = ""
-
+    let keypadRows = [
+        ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+                ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+                ["Z", "X", "C", "V", "B", "N", "M"],
+                ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+        ]
     var body: some View {
         VStack {
             ScrollView {
@@ -43,7 +48,8 @@ struct TextCommunicationView: View {
             .background(Color("Twilight"))
             .padding(.bottom)
             .padding(.horizontal)
-
+            KeypadView(rows: keypadRows, text: $newMessageText)
+                .frame(maxWidth:90, maxHeight: 300)
         }
         .background(Color("Twilight"))
         .navigationTitle("Messages")
@@ -72,7 +78,36 @@ struct MessageRow: View {
     }
 }
 
-
+struct KeypadView: View {
+    let rows: [[String]]
+    @Binding var text: String
+    
+    var body: some View {
+        VStack {
+            ForEach(rows, id: \.self) { row in
+                HStack(spacing: 1) {
+                    ForEach(row, id: \.self) { key in
+                        Button(action: {
+                            self.text += key
+                        }, label: {
+                            Text(key)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(width: 30, height: 40)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                //.padding(5)
+                        })
+                    }
+                }
+                Spacer()
+            }
+        }
+        .background(Color("Twilight"))
+        .padding(.bottom)
+        .padding(.horizontal)
+    }
+}
 
 struct TextCommunicationView_Previews: PreviewProvider {
     static var previews: some View {
