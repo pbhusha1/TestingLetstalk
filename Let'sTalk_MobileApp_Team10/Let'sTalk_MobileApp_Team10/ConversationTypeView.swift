@@ -2,14 +2,14 @@
 //  ConversationTypeView.swift
 //  Let'sTalk_MobileApp_Team10
 //
-//  Created by ADMI NISTRATOR on 09/03/23.
+//  Created by Krishna Sai  on 3/24/23.
 //
 
 import SwiftUI
 
 struct ConversationTypeView: View {
     var body: some View {
-        
+        NavigationView {
         VStack{
             Text("Conversation Type")
                 .font(.largeTitle)
@@ -162,17 +162,28 @@ struct ConversationTypeView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                 }
-                
+                NavigationLink(destination: TextCommunicationView()) {
+                    Text("Continue")}
+                .font(.custom("Poppins", size:20))
+                .foregroundColor(Color("Strong"))
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color("Strong"), lineWidth: 2)
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-        
-            
-            
-            
-            
             
         }
+        .background(Color("Twilight"))
     }
+        .navigationBarBackButtonHidden(true)
+            
+    }
+    
 }
+
 
 struct ConversationTypeView_Previews: PreviewProvider {
     static var previews: some View {
