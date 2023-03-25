@@ -11,13 +11,14 @@ struct Message: Identifiable {
     let id = UUID()
     let text: String
     let isMe: Bool
+    let timestamp: Date
 }
 
 struct TextCommunicationView: View {
     @State private var messages: [Message] = [
-            Message(text: "Hi there!", isMe: false),
-            Message(text: "Hello!", isMe: true),
-            Message(text: "How are you?", isMe: false),
+            Message(text: "Hi there!", isMe: false, timestamp: Date()),
+            Message(text: "Hello!", isMe: true, timestamp: Date()),
+            Message(text: "How are you?", isMe: false, timestamp: Date()),
         ]
     @State private var newMessageText = ""
     let keypadRows = [
@@ -26,6 +27,9 @@ struct TextCommunicationView: View {
                 ["Z", "X", "C", "V", "B", "N", "M"],
                 ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
         ]
+    
+    @State private var showAudioCall = false
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -40,7 +44,7 @@ struct TextCommunicationView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 Button("Send") {
-                    messages.append(Message(text: newMessageText, isMe: true))
+                    messages.append(Message(text: newMessageText, isMe: true, timestamp: Date()))
                     newMessageText = ""
                 }
                 .padding(.trailing)
@@ -53,9 +57,10 @@ struct TextCommunicationView: View {
         }
         .background(Color("Twilight"))
         .navigationTitle("Messages")
-    
     }
 }
+
+
 
 struct MessageRow: View {
     let message: Message
@@ -65,11 +70,16 @@ struct MessageRow: View {
             if message.isMe {
                 Spacer()
             }
-            Text(message.text)
-                .padding(10)
-                .foregroundColor(.white)
-                .background(message.isMe ? Color.blue : Color.gray)
-                .cornerRadius(10)
+            VStack(alignment: message.isMe ? .trailing : .leading, spacing: 2) {
+                            Text(message.text)
+                                .padding(10)
+                                .foregroundColor(.white)
+                                .background(message.isMe ? Color.blue : Color.gray)
+                                .cornerRadius(10)
+                            Text(message.timestamp, style: .time)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
             if !message.isMe {
                 Spacer()
             }
@@ -88,7 +98,11 @@ struct KeypadView: View {
                 HStack(spacing: 1) {
                     ForEach(row, id: \.self) { key in
                         Button(action: {
-                            self.text += key
+                            if key == "Clear" {
+                                self.text = ""
+                            } else {
+                                self.text += key
+                            }
                         }, label: {
                             Text(key)
                                 .font(.headline)
@@ -96,7 +110,6 @@ struct KeypadView: View {
                                 .frame(width: 30, height: 40)
                                 .background(Color.blue)
                                 .cornerRadius(10)
-                                //.padding(5)
                         })
                     }
                 }
