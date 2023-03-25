@@ -57,6 +57,17 @@ struct TextCommunicationView: View {
         }
         .background(Color("Twilight"))
         .navigationTitle("Messages")
+        .navigationBarItems(trailing:
+        NavigationLink(destination: AudioCallView()) {
+                Image(systemName: "phone.fill.arrow.up.right")
+                    .font(.system(size: 20))
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+                    .background(Color.green)
+                    .cornerRadius(10)
+                    .padding(.trailing)
+        }
+        )
     }
 }
 
