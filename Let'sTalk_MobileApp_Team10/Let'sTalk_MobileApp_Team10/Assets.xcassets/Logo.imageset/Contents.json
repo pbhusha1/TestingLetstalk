@@ -1,52 +1,7 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal"
-    },
-    {
-      "idiom" : "universal",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "memory" : "1GB"
-    },
-    {
-      "filename" : "istockphoto-469298184-612x612.jpg",
+      "filename" : "Lets Talk logo transparent v1 2.25.23.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -198,57 +153,6 @@
       "idiom" : "universal",
       "memory" : "1GB",
       "scale" : "3x"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB"
     },
     {
       "height-class" : "regular",
@@ -420,57 +324,6 @@
       "idiom" : "universal",
       "memory" : "1GB",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "idiom" : "universal",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "memory" : "1GB",
-      "width-class" : "regular"
     },
     {
       "idiom" : "universal",
@@ -641,63 +494,6 @@
       "idiom" : "universal",
       "memory" : "1GB",
       "scale" : "3x",
-      "width-class" : "regular"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "width-class" : "regular"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "universal",
-      "memory" : "1GB",
       "width-class" : "regular"
     },
     {
@@ -890,51 +686,6 @@
       "width-class" : "regular"
     },
     {
-      "idiom" : "iphone"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "iphone"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "iphone"
-    },
-    {
-      "idiom" : "iphone",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "iphone",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "iphone",
-      "memory" : "1GB"
-    },
-    {
       "idiom" : "iphone",
       "scale" : "1x"
     },
@@ -1086,57 +837,6 @@
       "idiom" : "iphone",
       "memory" : "1GB",
       "scale" : "3x"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "iphone"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB"
     },
     {
       "height-class" : "regular",
@@ -1308,57 +1008,6 @@
       "idiom" : "iphone",
       "memory" : "1GB",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "idiom" : "iphone",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "iphone",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "iphone",
-      "memory" : "1GB",
-      "width-class" : "regular"
     },
     {
       "idiom" : "iphone",
@@ -1529,63 +1178,6 @@
       "idiom" : "iphone",
       "memory" : "1GB",
       "scale" : "3x",
-      "width-class" : "regular"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "width-class" : "regular"
-    },
-    {
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB",
-      "width-class" : "regular"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "height-class" : "regular",
-      "idiom" : "iphone",
-      "memory" : "1GB",
       "width-class" : "regular"
     },
     {
